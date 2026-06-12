@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Busca el paquete en instalación de sistema, usuario o repo local
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+for dir in \
+  "/usr/share/omen-light-studio" \
+  "${HOME}/.local/share/omen-light-studio" \
+  "$(cd "$SCRIPT_DIR/.." && pwd)"; do
+  if [[ -f "${dir}/omen_light_studio.py" ]]; then
+    exec python3 "${dir}/omen_light_studio.py" "$@"
+  fi
+done
+echo "omen-light-studio: no se encontró omen_light_studio.py" >&2
+exit 1

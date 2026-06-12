@@ -196,7 +196,7 @@ class KeyboardCanvas(Gtk.DrawingArea):
 
 class OmenLightStudio(Adw.Application):
     def __init__(self) -> None:
-        super().__init__(application_id="com.pablomontes.omen-light-studio")
+        super().__init__(application_id="com.omenlightstudio.app")
         self.backend = HpRgbBackend()
         self.key_colors: Dict[str, RGB] = default_key_colors((20, 20, 28))
         self.display_colors: Dict[str, RGB] = dict(self.key_colors)
